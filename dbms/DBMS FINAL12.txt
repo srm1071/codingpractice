@@ -1,0 +1,196 @@
+create table employee20141071(FNAME varchar(15) not null,
+                       MINIT char,
+                       LNAME varchar(15) not null,
+                       SSN char(9) not null,
+                       BDATE date,
+                       ADDRESS varchar(30),
+                       SEX char,
+                       SALARY decimal(10,2),
+                       SUPERSSN char(9),
+                       DNUMBER int not null,
+                       primary key(SSN)
+                       );
+create table department20141071(DNAME varchar(15) not null,
+                         DNUMBER int not null,
+                         MGRSSN char(9),
+                         MGRSTARTDATE date,
+                         primary key(DNUMBER),
+                         unique(DNAME)
+                         );
+create table department_location20141071(DNUMBER int not null,
+                          DLOCATIONS varchar(15) not null,
+                          primary key(DNUMBER,DLOCATIONS));
+create table works_on20141071(ESSN char(9) not null,
+                       PNO int not null,
+                       HOURS DECIMAL(3,1) not null,
+                       primary key(ESSN,PNO)
+                       );
+create table project20141071(PNAME varchar(20) not null,
+                      PNUMBER int not null,
+                      PLOCATION varchar(15),
+                      DNUMBER int,
+                      primary key(PNUMBER),
+                      unique(PNAME)
+                      );
+create table dependent20141071(ESSN char(9) not null,
+                        DEPARTMENT_NAME varchar(15) not null,
+                        SEX char,
+                        BDATE date,
+                        RELATIONSHIP varchar(8),
+                        primary key(ESSN,DEPARTMENT_NAME)
+                        );
+
+
+
+INSERT INTO employee20141071 VALUES(
+'John','B','Smith','123456789',TO_DATE('1965-01-09','YYYY-MM-DD'),'731,Fred,Houston,TX','M',30000,'333445555',5);
+INSERT INTO employee20141071 VALUES(
+'Franklin','T','Wong','333445555',TO_DATE('1955-12-08','YYYY-MM-DD'),'638,Voss,HOUSTON,TX','M',40000,'888665555',5);
+INSERT INTO employee20141071 VALUES(
+'Alicia','J','Zelaya','999887777',TO_DATE('1968-07-19','YYYY-MM-DD'),'321,Castle,HOUSTON,TX','F',25000,'987654321',4);
+INSERT INTO employee20141071 VALUES(
+'Jennifer','S','Wallace','987654321',TO_DATE('1941-06-02','YYYY-MM-DD'),'291,Beury,Bellarime,TX','F',43000,'888665555',4);
+INSERT INTO employee20141071 VALUES(
+'Ramesh','K','Narayan','666884444',TO_DATE('1962-09-15','YYYY-MM-DD'),'975,Fire Oak,Humble,TX','M',38000,'333445555',5);
+INSERT INTO employee20141071 VALUES(
+'Joyee','A','English','453453453',TO_DATE('1972-07-31','YYYY-MM-DD'),'5631,Rice,Houston,TX','F',25000,'333445555',5);
+INSERT INTO employee20141071 VALUES(
+'Ahmed','V','Jabbar','987987987',TO_DATE('1969-03-29','YYYY-MM-DD'),'980,Dallas,Houston,TX','M',25000,'987654321',4);
+INSERT INTO employee20141071 VALUES(
+'James','E','Borg','888665555',TO_DATE('1937-11-10','YYYY-MM-DD'),'450,Store,Houston,TX','M',55000,'null',1);
+
+
+
+
+INSERT INTO department20141071 VALUES(
+'Research',5,'333445555',TO_DATE('1988-04-02','YYYY-MM-DD'));
+INSERT INTO department20141071 VALUES(
+'Administrator',4,'987654321',TO_DATE('1995-01-01','YYYY-MM-DD'));
+INSERT INTO department20141071 VALUES(
+'Headquarter',1,'888665555',TO_DATE('1981-06-19','YYYY-MM-DD'));
+
+
+
+
+
+
+INSERT INTO department_location20141071 VALUES(
+1,'Houston');
+INSERT INTO department_location20141071 VALUES(
+4,'Stafford');
+INSERT INTO department_location20141071 VALUES(
+5,'Bellair');
+INSERT INTO department_location20141071 VALUES(
+5,'Sugarland');
+INSERT INTO department_location20141071 VALUES(
+5,'Houston');
+
+
+
+
+INSERT INTO works_on20141071 VALUES(
+'123456789',1,32.5);
+INSERT INTO works_on20141071 VALUES(
+'123456789',2,7.5);
+INSERT INTO works_on20141071 VALUES(
+'666884444',3,40.0);
+INSERT INTO works_on20141071 VALUES(
+'453453453',1,20.0);
+INSERT INTO works_on20141071 VALUES(
+'453453453',2,20.0);
+INSERT INTO works_on20141071 VALUES(
+'333445555',2,10.0);
+INSERT INTO works_on20141071 VALUES(
+'333445555',3,10.0);
+INSERT INTO works_on20141071 VALUES(
+'333445555',10,10.0);
+INSERT INTO works_on20141071 VALUES(
+'333445555',20,10.0);
+INSERT INTO works_on20141071 VALUES(
+'999887777',30,30.0);
+INSERT INTO works_on20141071 VALUES(
+'999887777',10,10.0);
+INSERT INTO works_on20141071 VALUES(
+'987987987',10,35.0);
+INSERT INTO works_on20141071 VALUES(
+'987987987',30,5.0);
+INSERT INTO works_on20141071 VALUES(
+'987654321',30,20.0);
+INSERT INTO works_on20141071 VALUES(
+'987654321',20,20.0);
+INSERT INTO works_on20141071 VALUES(
+'888665555',20,'null');
+
+
+
+INSERT INTO project20141071 VALUES(
+'Computerization',10,'Stafford',4);
+INSERT INTO project20141071 VALUES(
+'Reorganisation',20,Houston,1);
+INSERT INTO project20141071 VALUES(
+'New Benefits','30','Stafford','4');
+INSERT INTO project20141071 VALUES(
+
+
+INSERT INTO dependent20141071 VALUES(
+'333445555','Alice','F',TO_DATE('1968-04-05','YYYY-MM-DD'),'Daughter');
+INSERT INTO dependent20141071 VALUES(
+'333445555','Theodore','M',TO_DATE('1983-10-25','YYYY-MM-DD'),'Son');
+INSERT INTO dependent20141071 VALUES(
+'333445555','Joy','F',TO_DATE('1958-05-03','YYYY-MM-DD'),'Spouse');
+INSERT INTO dependent20141071 VALUES(
+'987654321','Abner','M',TO_DATE('1942-02-28','YYYY-MM-DD'),'Spouse');
+INSERT INTO dependent20141071 VALUES(
+'123456789','Michel','M',TO_DATE('1988-01-04','YYYY-MM-DD'),'Son')
+INSERT INTO dependent20141071 VALUES(
+'123456789','Alice','F',TO_DATE('1988-12-30','YYYY-MM-DD'),'Daughter');
+INSERT INTO dependent20141071 VALUES(
+'123456789','Elizabeth','F',TO_DATE('1967-05-05','YYYY-MM-DD'),'Spouse');
+INSERT INTO dependent20141071 VALUES(
+
+
+
+
+
+
+
+alter table employee20141071 add constraint sm71a foreign key(SUPERSSN) references employee20141071(SSN);
+UPDATE employee20141071 set SUPERSSN='333445555' where SSN='123456789' ;
+
+
+ALTER TABLE department20141071 ADD CONSTRAINT F2 FOREIGN KEY (DNUMBER) REFERENCES department20141071 (DNUMBER);
+SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE FROM USER_CONSTRAINTS WHERE TABLE_NAME LIKE 'E%01';
+
+
+
+
+1.Select BDATE,ADDRESS FROM employee20141071 where FNAME='john' and MINIT='B' and LNAME='smith';
+
+
+2.select FNAME,MINIT,LNAME,ADDRESS from employee20141071 e,department20141071 d where d.DNAME='Research' and e.DNUMBER=d.DNUMBER; 
+
+
+3.select p.PNUMBER,e.DNUMBER,e.FNAME,e.MINIT,e.LNAME,e.ADDRESS,e.BDATE from employee20141071 e , project20141071 p where e.DNUMBER=p.DNUMBER ;
+
+
+4.select m.FNAME,m.MINIT,m.LNAME,e.FNAME,e.MINIT,e.LNAME from employee20141071 e m,department20141071 d where m.SUPERSSN=d.MGRSSN and e.DNUMBER=d.DNUMBER;
+
+
+5.select FNAME,MINIT,LNAME from employee20141071 e, department08 d where d.DNUMBER=e.DNUMBER and d.DNUMBER=5;
+
+
+6. select DISTINCT SALARY from employee20141071;
+
+
+7.select p.PNUMBER from employee20141071 e,project08 p where p.DNUMBER=e.DNUMBER and e.LNAME='Smith';
+
+
+
+
+
+
+
+
+
+
+
